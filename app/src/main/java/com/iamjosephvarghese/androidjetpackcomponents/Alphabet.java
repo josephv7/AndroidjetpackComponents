@@ -24,9 +24,7 @@ public class Alphabet {
         this.mAlphabet = mAlphabet;
     }
 
-
-    @NonNull
-    public String getmAlphabet() {
+    public String getAlphabet() {
         return mAlphabet;
     }
 }
