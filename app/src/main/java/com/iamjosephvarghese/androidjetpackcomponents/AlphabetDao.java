@@ -20,7 +20,7 @@ public interface AlphabetDao {
     void deleteAll();
 
     @Query("SELECT * from alphabet_table ORDER BY alphabet ASC")
-    LiveData<List<Word>> orderAscending();
+    LiveData<List<Alphabet>> orderAscending();
 
 
 }

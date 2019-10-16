@@ -19,6 +19,7 @@ public class Word {
 
 
     public String getWord() {
+
         return mWord;
     }
 }
