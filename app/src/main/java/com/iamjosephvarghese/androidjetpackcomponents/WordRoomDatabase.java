@@ -9,6 +9,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import static com.iamjosephvarghese.androidjetpackcomponents.Alphabet.MIGRATION_1_2;
+
 @Database(entities = {Word.class,Alphabet.class}, version = 2)
 public abstract class WordRoomDatabase extends RoomDatabase {
     public abstract WordDao wordDao();
@@ -24,6 +26,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
 
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             WordRoomDatabase.class, "word_database")
+                            .addMigrations(MIGRATION_1_2)
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
