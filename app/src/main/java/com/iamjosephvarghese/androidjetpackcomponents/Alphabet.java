@@ -11,6 +11,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.PrimaryKey;
 import androidx.room.Query;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Entity(tableName = "alphabet_table")
 public class Alphabet {
@@ -27,4 +29,14 @@ public class Alphabet {
     public String getAlphabet() {
         return mAlphabet;
     }
+
+
+
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE `alphabet_table` (`alphabet` TEXT NOT NULL, PRIMARY KEY(`alphabet`))");
+        }
+    };
+
 }
