@@ -10,11 +10,13 @@ import androidx.lifecycle.LiveData;
 public class WordViewModel extends AndroidViewModel {
     private WordRepository mRepository;
     private LiveData<List<Word>> mAllWords;
+    private LiveData<List<Alphabet>> mAllAlphabets;
 
     public WordViewModel (Application application) {
         super(application);
         mRepository = new WordRepository(application);
         mAllWords = mRepository.getAllWords();
+        mAllAlphabets = mRepository.getAllAlphabets();
     }
 
 
@@ -22,7 +24,15 @@ public class WordViewModel extends AndroidViewModel {
         return mAllWords;
     }
 
+    public LiveData<List<Alphabet>> getAllAlphabets() {
+        return mAllAlphabets;
+    }
+
     public void insert(Word word) {
         mRepository.insert(word);
+    }
+
+    public void insert(Alphabet alphabet){
+        mRepository.insert(alphabet);
     }
 }

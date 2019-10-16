@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setWords(words);
             }
         });
+        mWordViewModel.getAllAlphabets().observe(this, new Observer<List<Alphabet>>() {
+            @Override
+            public void onChanged(List<Alphabet> alphabets) {
+                adapter.setmAlphabets(alphabets);
+            }
+        });
 
 
 
@@ -65,7 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
+            Alphabet alphabet = new Alphabet(data.getStringExtra(NewWordActivity.EXTRA_REPLY).toUpperCase());
+            mWordViewModel.insert(alphabet);
             mWordViewModel.insert(word);
+
         } else {
             Toast.makeText(
                     getApplicationContext(),

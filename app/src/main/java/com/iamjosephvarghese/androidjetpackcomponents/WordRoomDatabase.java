@@ -66,7 +66,9 @@ public abstract class WordRoomDatabase extends RoomDatabase {
 
 
             mAlphabetDao.deleteAll();
-            Alphabet alphabet = new Alphabet("A");
+            Alphabet alphabet = new Alphabet("hello");
+            mAlphabetDao.insert(alphabet);
+            alphabet = new Alphabet("world");
             mAlphabetDao.insert(alphabet);
 
             return null;
